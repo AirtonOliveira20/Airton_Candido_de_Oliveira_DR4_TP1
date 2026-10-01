@@ -1,0 +1,60 @@
+### Listar usuários
+GET http://localhost:8080/usuarios
+
+### Listar produtos
+GET http://localhost:8080/produtos
+
+### Consultar estoque
+GET http://localhost:8080/estoques
+
+### Criar pedido aprovado
+POST http://localhost:8080/pedidos
+Content-Type: application/json
+
+{
+  "usuarioId": 1,
+  "itens": [
+    {
+      "produtoId": 1,
+      "quantidade": 2
+    },
+    {
+      "produtoId": 2,
+      "quantidade": 1
+    }
+  ],
+  "formaPagamento": "CARTAO",
+  "numeroCartao": "4111111111111111"
+}
+
+### Criar pedido com cartão bloqueado
+POST http://localhost:8080/pedidos
+Content-Type: application/json
+
+{
+  "usuarioId": 1,
+  "itens": [
+    {
+      "produtoId": 1,
+      "quantidade": 1
+    }
+  ],
+  "formaPagamento": "CARTAO",
+  "numeroCartao": "4111111111110000"
+}
+
+### Criar pedido acima do limite
+POST http://localhost:8080/pedidos
+Content-Type: application/json
+
+{
+  "usuarioId": 1,
+  "itens": [
+    {
+      "produtoId": 4,
+      "quantidade": 2
+    }
+  ],
+  "formaPagamento": "CARTAO",
+  "numeroCartao": "5555555555554444"
+}
